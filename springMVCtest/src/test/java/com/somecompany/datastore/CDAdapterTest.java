@@ -2,9 +2,17 @@ package com.somecompany.datastore;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Marshaller;
+import javax.xml.bind.Unmarshaller;
 
+import com.sun.xml.internal.ws.util.Pool;
 import org.junit.Before;
 import org.junit.Test;
+
+
+import java.io.StringReader;
+import java.io.StringWriter;
+
+import static org.junit.Assert.assertEquals;
 
 public class CDAdapterTest {
 	private CD testCD;
@@ -27,6 +35,17 @@ public class CDAdapterTest {
 	    m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
 
 	    // Write to System.out
-	    m.marshal(testCDAdapter, System.out);
+	    StringWriter sw = new StringWriter();
+        m.marshal(testCDAdapter, sw);
+        System.out.println(sw.toString());
+        Unmarshaller unmarshaller = context.createUnmarshaller();
+        CDAdapter cdUmarsh = (CDAdapter)unmarshaller.unmarshal(new StringReader(sw.toString()));
+        CD afterUnmarsh = new CD(cdUmarsh.getTitle(),
+                cdUmarsh.getArtist(),
+                cdUmarsh.getCountry(),
+                cdUmarsh.getCompany(),
+                cdUmarsh.getPrice(),
+                cdUmarsh.getYear());
+        assertEquals(testCD, afterUnmarsh);
 	}
 }
