@@ -1,5 +1,6 @@
 package com.somecompany.datastore;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.xml.bind.annotation.XmlElement;
@@ -7,19 +8,34 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement(name = "CATALOG")
 public class CatalogAdapter {
-	@XmlElement(name = "CD")
-	private List<CD> cdList;
+
+	private List<CDAdapter> cdAdapterList;
 	
 	public CatalogAdapter(List<CD> cdList) {
-		this.cdList = cdList;
+        cdAdapterList = new ArrayList<CDAdapter>();
+        for (CD cd : cdList) {
+            cdAdapterList.add(new CDAdapter(cd));
+        }
 	}
 
-	public List<CD> getCdList() {
-		return cdList;
+    public CatalogAdapter() {
+
+    }
+    @XmlElement(name = "CD")
+	public List<CDAdapter> getCdAdapterListCdList() {
+		return cdAdapterList;
 	}
 
-	public void setCdList(List<CD> cdList) {
-		this.cdList = cdList;
+	public void setCdAdapterListList(List<CDAdapter> cdAdapterList) {
+		this.cdAdapterList = cdAdapterList;
 	}
+
+    public Catalog getCatalog() {
+        List<CD> cdList = new ArrayList<>();
+        for (CDAdapter cdAdapter : getCdAdapterListCdList()) {
+            cdList.add(cdAdapter.getCD());
+        }
+        return new Catalog(cdList);
+    }
 	
 }

@@ -78,6 +78,9 @@ public class CDAdapter {
 	public void setYear(String year) {
 		this.year = year;
 	}
-	
+
+    public CD getCD() {
+        return new CD(this.getTitle(), this.getArtist(), this.getCountry(), this.getCompany(), this.getPrice(), this.getYear());
+    }
 	
 }

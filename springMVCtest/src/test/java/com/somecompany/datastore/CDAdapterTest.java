@@ -11,6 +11,8 @@ import org.junit.Test;
 
 import java.io.StringReader;
 import java.io.StringWriter;
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
@@ -48,4 +50,26 @@ public class CDAdapterTest {
                 cdUmarsh.getYear());
         assertEquals(testCD, afterUnmarsh);
 	}
+
+    @Test
+    public void testCatalogAdapter_marshallUnmarshall() throws Exception {
+        // create JAXB context and instantiate marshaller
+        JAXBContext context = JAXBContext.newInstance(CatalogAdapter.class);
+        Marshaller m = context.createMarshaller();
+        m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
+
+        // Write to System.out
+        StringWriter sw = new StringWriter();
+        List<CD> cdList = new ArrayList<>();
+        cdList.add(testCD);
+        Catalog catalog = new Catalog(cdList);
+        CatalogAdapter testCatalogAdapter = new CatalogAdapter(cdList);
+        m.marshal(testCatalogAdapter, sw);
+        System.out.println(sw.toString());
+        Unmarshaller unmarshaller = context.createUnmarshaller();
+        CatalogAdapter catalogAdapterUmarsh = (CatalogAdapter)unmarshaller.unmarshal(new StringReader(sw.toString()));
+
+        Catalog afterUnmarshCatalog = catalogAdapterUmarsh.getCatalog();
+        assertEquals(catalog, catalogAdapterUmarsh);
+    }
 }
