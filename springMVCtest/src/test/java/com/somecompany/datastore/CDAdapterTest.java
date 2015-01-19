@@ -68,8 +68,10 @@ public class CDAdapterTest {
         System.out.println(sw.toString());
         Unmarshaller unmarshaller = context.createUnmarshaller();
         CatalogAdapter catalogAdapterUmarsh = (CatalogAdapter)unmarshaller.unmarshal(new StringReader(sw.toString()));
-
+        System.out.println(catalogAdapterUmarsh);
         Catalog afterUnmarshCatalog = catalogAdapterUmarsh.getCatalog();
-        assertEquals(catalog, catalogAdapterUmarsh);
+        System.out.println(catalog);
+        System.out.println(afterUnmarshCatalog);
+        assertEquals(catalog, afterUnmarshCatalog);
     }
 }

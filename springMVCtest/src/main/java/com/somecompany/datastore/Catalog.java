@@ -1,8 +1,8 @@
 package com.somecompany.datastore;
 
 import java.io.Serializable;
-
 import java.util.List;
+
 
 
 import javax.xml.bind.annotation.XmlElement;
@@ -44,6 +44,15 @@ public class Catalog implements Serializable {
 		} else if (!cdList.equals(other.cdList))
 			return false;
 		return true;
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("Catalog [cdList=");
+		builder.append(cdList);
+		builder.append("]");
+		return builder.toString();
 	}
 	
 }

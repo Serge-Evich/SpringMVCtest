@@ -1,4 +1,4 @@
-package com.somecompany.datastore.dao;
+package com.somecompany.datastore;
 
 import java.io.Serializable;
 import java.util.List;

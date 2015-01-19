@@ -3,6 +3,8 @@ package com.somecompany.datastore.dao;
 import java.io.Serializable;
 import java.util.List;
 
+import com.somecompany.datastore.DataStore;
+
 public abstract class AbstractDao<T extends Serializable> implements Operations<T> {
 	
 

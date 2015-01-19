@@ -82,5 +82,23 @@ public class CDAdapter {
     public CD getCD() {
         return new CD(this.getTitle(), this.getArtist(), this.getCountry(), this.getCompany(), this.getPrice(), this.getYear());
     }
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("CDAdapter [title=");
+		builder.append(title);
+		builder.append(", artist=");
+		builder.append(artist);
+		builder.append(", country=");
+		builder.append(country);
+		builder.append(", company=");
+		builder.append(company);
+		builder.append(", price=");
+		builder.append(price);
+		builder.append(", year=");
+		builder.append(year);
+		builder.append("]");
+		return builder.toString();
+	}
 	
 }
