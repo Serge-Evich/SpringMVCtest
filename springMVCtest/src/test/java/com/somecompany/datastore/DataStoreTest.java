@@ -56,7 +56,6 @@ public class DataStoreTest {
         catalog = new Catalog(cdList);
         catalogDataStoreMock = mock(CatalogDataStore.class);
         xmlCatalogDataStore = new XMLCatalogDataStore();
-
     }
 
     @Test
@@ -66,9 +65,16 @@ public class DataStoreTest {
     }
     
     @Test
-    public void testCatalogDataStore() {
-    	xmlCatalogDataStore.setFilePath(Paths.get("src\\test\\resources\\Catalog.xml"));
+    public void testXMLCatalogDataStore_testGetMethod() {
+    	xmlCatalogDataStore.setFilePath("src\\test\\resources\\Catalog.xml");
     	Assert.assertEquals(catalog, xmlCatalogDataStore.get("CATALOG"));
+    }
+    
+    @Test
+    public void testXMLCatalogDataStore_testSaveMethod() {
+    	xmlCatalogDataStore.setFilePath("src\\test\\resources\\CatalogTestSaveMethod.xml");
+    	xmlCatalogDataStore.save(catalog);
+    	Assert.assertEquals(catalog, xmlCatalogDataStore.get(""));
     }
 
 }

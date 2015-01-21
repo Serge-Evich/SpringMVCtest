@@ -1,10 +1,12 @@
 package com.somecompany.datastore;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.StringReader;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 
 import javax.xml.bind.JAXBContext;
@@ -16,14 +18,14 @@ import javax.xml.bind.Unmarshaller;
  * Created by Dmitry on 21.01.2015.
  */
 public class XMLCatalogDataStore implements CatalogDataStore {
-    private Path filePath;
+    private String filePath;
     
     
-	public Path getFilePath() {
+	public String getFilePath() {
 		return filePath;
 	}
 
-	public void setFilePath(Path filePath) {
+	public void setFilePath(String filePath) {
 		this.filePath = filePath;
 	}
 
@@ -31,7 +33,7 @@ public class XMLCatalogDataStore implements CatalogDataStore {
     public Catalog get(String id) {
 		JAXBContext context;
 		Catalog catalog = null;
-		try (BufferedReader br = Files.newBufferedReader(this.filePath, Charset.forName("UTF-8"))) {
+		try (BufferedReader br = Files.newBufferedReader(Paths.get(this.filePath), Charset.forName("UTF-8"))) {
 			context = JAXBContext.newInstance(CatalogAdapter.class);
 			Unmarshaller unmarshaller = context.createUnmarshaller();
 			CatalogAdapter catalogAdapterUmarsh = (CatalogAdapter)unmarshaller.unmarshal(br);
@@ -54,8 +56,20 @@ public class XMLCatalogDataStore implements CatalogDataStore {
     }
 
     @Override
-    public void save(Catalog pojo) {
-
+    public void save(Catalog catalog) {
+    	try (
+    			BufferedWriter bw = Files.newBufferedWriter(Paths.get(this.filePath), 
+    			Charset.forName("UTF-8"))
+    	) {
+    		JAXBContext context = JAXBContext.newInstance(CatalogAdapter.class);
+    		Marshaller m = context.createMarshaller();
+    		m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
+    	    CatalogAdapter catalogAdapter = new CatalogAdapter(catalog.getCDList());
+            m.marshal(catalogAdapter, bw);
+    	    
+    	} catch (Exception ex) {
+    		ex.printStackTrace();
+    	}
     }
 
     @Override
