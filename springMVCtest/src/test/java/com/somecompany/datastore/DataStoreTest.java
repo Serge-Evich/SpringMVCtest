@@ -4,6 +4,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,8 +25,17 @@ public class DataStoreTest {
             "        <TITLE>Empire Burlesque</TITLE>\n" +
             "        <YEAR>1985</YEAR>\n" +
             "    </CD>\n" +
+            "    <CD>\n" +
+            "        <ARTIST>Bonnie Tyler</ARTIST>\n" +
+            "        <COMPANY>CBS Records</COMPANY>\n" +
+            "        <COUNTRY>UK</COUNTRY>\n" +
+            "        <PRICE>9.90</PRICE>\n" +
+            "        <TITLE>Hide your heart</TITLE>\n" +
+            "        <YEAR>1988</YEAR>\n" +
+            "    </CD>\n" +
             "</CATALOG>";
     private List<CD> cdList;
+    private XMLCatalogDataStore xmlCatalogDataStore;
 	@Before
 	public void setup() {
 		cd1 = new CD("Empire Burlesque",
@@ -45,13 +55,20 @@ public class DataStoreTest {
         cdList.add(cd2);
         catalog = new Catalog(cdList);
         catalogDataStoreMock = mock(CatalogDataStore.class);
+        xmlCatalogDataStore = new XMLCatalogDataStore();
 
     }
 
     @Test
     public void testDataStore_mock() {
-        when(catalogDataStoreMock.get("")).thenReturn(catalog);
-        Assert.assertEquals(catalog, catalogDataStoreMock.get(""));
+        when(catalogDataStoreMock.get("CATALOG")).thenReturn(catalog);
+        Assert.assertEquals(catalog, catalogDataStoreMock.get("CATALOG"));
+    }
+    
+    @Test
+    public void testCatalogDataStore() {
+    	xmlCatalogDataStore.setFilePath(Paths.get("src\\test\\resources\\Catalog.xml"));
+    	Assert.assertEquals(catalog, xmlCatalogDataStore.get("CATALOG"));
     }
 
 }
