@@ -19,6 +19,9 @@ import javax.xml.bind.Unmarshaller;
  */
 public class XMLCatalogDataStore implements CatalogDataStore {
     private String filePath;
+    public XMLCatalogDataStore(String filePath) {
+        this.filePath = filePath;
+    }
     
     
 	public String getFilePath() {

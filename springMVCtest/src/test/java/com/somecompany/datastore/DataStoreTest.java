@@ -35,7 +35,8 @@ public class DataStoreTest {
             "    </CD>\n" +
             "</CATALOG>";
     private List<CD> cdList;
-    private XMLCatalogDataStore xmlCatalogDataStore;
+    private CatalogDataStore xmlCatalogDataStoreTestGet;
+    private CatalogDataStore xmlCatalogDataStoreTestSave;
 	@Before
 	public void setup() {
 		cd1 = new CD("Empire Burlesque",
@@ -55,7 +56,8 @@ public class DataStoreTest {
         cdList.add(cd2);
         catalog = new Catalog(cdList);
         catalogDataStoreMock = mock(CatalogDataStore.class);
-        xmlCatalogDataStore = new XMLCatalogDataStore();
+        xmlCatalogDataStoreTestGet = new XMLCatalogDataStore("src\\test\\resources\\Catalog.xml");
+        xmlCatalogDataStoreTestSave = new XMLCatalogDataStore("src\\test\\resources\\CatalogTestSaveMethod.xml");
     }
 
     @Test
@@ -66,15 +68,13 @@ public class DataStoreTest {
     
     @Test
     public void testXMLCatalogDataStore_testGetMethod() {
-    	xmlCatalogDataStore.setFilePath("src\\test\\resources\\Catalog.xml");
-    	Assert.assertEquals(catalog, xmlCatalogDataStore.get("CATALOG"));
+    	Assert.assertEquals(catalog, xmlCatalogDataStoreTestGet.get("CATALOG"));
     }
     
     @Test
     public void testXMLCatalogDataStore_testSaveMethod() {
-    	xmlCatalogDataStore.setFilePath("src\\test\\resources\\CatalogTestSaveMethod.xml");
-    	xmlCatalogDataStore.save(catalog);
-    	Assert.assertEquals(catalog, xmlCatalogDataStore.get(""));
+        xmlCatalogDataStoreTestSave.save(catalog);
+    	Assert.assertEquals(catalog, xmlCatalogDataStoreTestSave.get(""));
     }
 
 }
