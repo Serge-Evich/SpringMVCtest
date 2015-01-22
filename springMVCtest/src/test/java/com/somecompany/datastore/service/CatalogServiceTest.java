@@ -55,6 +55,25 @@ public class CatalogServiceTest {
         System.out.println(testCd);
         Assert.assertEquals(cd1, testCd);
     }
+    
+    @Test
+    public void testGetCatalog() {
+    	Assert.assertEquals(catalog, catalogService.getCatalog());
+    }
+    
+    @Test
+    public void testSaveCD() {
+    	CD cdSave = new CD("title", "artist", "country", "company", "price", "year");
+    	catalogService.saveCD(cdSave);
+    	Assert.assertEquals(cdSave, catalogService.getCDbyTitle("title"));
+    }
+    
+    @Test
+    public void testRemoveCD() {
+    	CD cdRemove = catalogService.removeCD("Hide your heart");
+    	Assert.assertEquals(cdRemove, cd2);
+    	Assert.assertNull(catalogService.getCDbyTitle("Hide your heart"));
+    }
 
 
 }

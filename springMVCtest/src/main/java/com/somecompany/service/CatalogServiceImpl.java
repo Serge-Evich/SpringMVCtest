@@ -73,14 +73,17 @@ public class CatalogServiceImpl implements CatalogService {
             return null;
         }
         cdList = catalog.getCDList();
+        boolean isRemoved = false;
         ListIterator<CD> iterator = cdList.listIterator();
         while (iterator.hasNext()) {
             CD c = iterator.next();
             if (c.getTitle().equals(title)) {
                 iterator.remove();
                 cd = c;
+                isRemoved = true;
             }
         }
+        if (isRemoved) catalogDao.create(catalog);
         return cd;
     }
 

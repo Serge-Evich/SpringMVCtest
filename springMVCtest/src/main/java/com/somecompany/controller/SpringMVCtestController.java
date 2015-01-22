@@ -2,7 +2,7 @@ package com.somecompany.controller;
 
 import com.somecompany.service.CatalogService;
 
-import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.stereotype.Controller;
 
 @Controller

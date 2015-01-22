@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<CATALOG>
+    <CD>
+        <ARTIST>Bob Dylan</ARTIST>
+        <COMPANY>Columbia</COMPANY>
+        <COUNTRY>USA</COUNTRY>
+        <PRICE>10.90</PRICE>
+        <TITLE>Empire Burlesque</TITLE>
+        <YEAR>1985</YEAR>
+    </CD>
+    <CD>
+        <ARTIST>Bonnie Tyler</ARTIST>
+        <COMPANY>CBS Records</COMPANY>
+        <COUNTRY>UK</COUNTRY>
+        <PRICE>9.90</PRICE>
+        <TITLE>Hide your heart</TITLE>
+        <YEAR>1988</YEAR>
+    </CD>
+    <CD>
+        <ARTIST>artist</ARTIST>
+        <COMPANY>company</COMPANY>
+        <COUNTRY>country</COUNTRY>
+        <PRICE>price</PRICE>
+        <TITLE>title</TITLE>
+        <YEAR>year</YEAR>
+    </CD>
+</CATALOG>
