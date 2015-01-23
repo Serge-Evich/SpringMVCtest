@@ -4,7 +4,6 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 
-import com.sun.xml.internal.ws.util.Pool;
 import org.junit.Before;
 import org.junit.Test;
 
