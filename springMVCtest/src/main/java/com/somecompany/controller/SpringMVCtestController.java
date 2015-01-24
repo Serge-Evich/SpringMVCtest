@@ -20,7 +20,7 @@ public class SpringMVCtestController {
     	this.catalogService = catalogService;
     }
 
-    @RequestMapping(value = "/catalog")
+    @RequestMapping("/catalog")
     public ModelAndView getCatalog() {
         ModelAndView model = new ModelAndView("catalog");
         model.addObject("cdList", this.catalogService.getCatalog().getCDList());
