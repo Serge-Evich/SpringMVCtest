@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
+import com.somecompany.datastore.CD;
+import com.somecompany.datastore.Catalog;
 import com.somecompany.service.CatalogService;
 
 import org.apache.log4j.Logger;
@@ -92,9 +94,23 @@ public class SpringMVCtestController {
             e.printStackTrace();
         }
     }
-    @RequestMapping(value = "/index", method = RequestMethod.GET)
-    public String getIndex() {
-        return "index";
+    
+    @RequestMapping(value = "/newcd", method = RequestMethod.GET)
+    public String getNewCdForm() {
+    	return "newcd";
     }
-
+    
+    @RequestMapping(value = "/newcd", method = RequestMethod.POST)
+    public String addNewCd(@RequestParam("title") String title,
+    		@RequestParam("artist") String artist,
+    		@RequestParam("country") String country,
+    		@RequestParam("company") String company,
+    		@RequestParam("price") String price,
+    		@RequestParam("year") String year) {
+    	
+    	System.out.println(title);
+    	catalogService.saveCD(catalogService.createCD(title, artist, country, company, price, year));
+    	return "catalog";
+    }
+    
 }

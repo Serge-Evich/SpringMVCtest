@@ -9,6 +9,10 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
 
+/**
+ * Catalog POJO
+ *
+ */
 public class Catalog implements Serializable {
 	
 	private final List<CD> cdList;
@@ -17,6 +21,10 @@ public class Catalog implements Serializable {
 		this.cdList = cdList;
 	}
 	
+	/**
+	 * get List of CD POJO's
+	 * @return
+	 */
 	public List<CD> getCDList() {
 		return cdList;
 	}

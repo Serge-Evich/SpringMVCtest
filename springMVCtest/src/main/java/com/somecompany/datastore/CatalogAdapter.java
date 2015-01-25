@@ -9,6 +9,10 @@ import javax.xml.bind.annotation.XmlElement;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
+/**
+ * Adapter class for marshalling/unmarshalling Catalog POJO
+ *
+ */
 @XmlRootElement(name = "CATALOG")
 @XmlAccessorType(XmlAccessType.FIELD)
 public class CatalogAdapter {

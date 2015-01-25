@@ -11,7 +11,7 @@
     <body>
         <div align="center">
             <h1>CD Catalog</h1>
-            <h2><a href="/new">New User</a></h2>
+            <h2><a href="newcd">New CD</a></h2>
              
             <table border="1">
                 <th>Title</th>
