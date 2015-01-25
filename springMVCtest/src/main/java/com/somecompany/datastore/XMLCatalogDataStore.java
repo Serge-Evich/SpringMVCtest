@@ -2,17 +2,16 @@ package com.somecompany.datastore;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
-
 import java.nio.charset.Charset;
 import java.nio.file.Files;
-
 import java.nio.file.Paths;
 import java.util.List;
 
 import javax.xml.bind.JAXBContext;
-
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
+
+import org.apache.log4j.Logger;
 
 
 
@@ -20,7 +19,6 @@ import javax.xml.bind.Unmarshaller;
  * Created by Dmitry on 21.01.2015.
  */
 public class XMLCatalogDataStore implements CatalogDataStore {
-   
 	private String filePath;
     public XMLCatalogDataStore(String filePath) {
         this.filePath = filePath;
