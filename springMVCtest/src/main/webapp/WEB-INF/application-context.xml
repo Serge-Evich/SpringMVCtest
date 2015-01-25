@@ -4,7 +4,6 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <bean id="catalogDataStore" class="com.somecompany.datastore.XMLCatalogDataStore">
-        <constructor-arg type="java.lang.String" value="C:\Jetty-9.2.0\resources\Catalog.xml"/>
     </bean>
     <bean id="catalogDao" class="com.somecompany.datastore.dao.CatalogDao">
         <constructor-arg ref = "catalogDataStore"/>

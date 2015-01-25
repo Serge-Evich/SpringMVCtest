@@ -19,8 +19,15 @@ import org.apache.log4j.Logger;
  * Created by Dmitry on 21.01.2015.
  */
 public class XMLCatalogDataStore implements CatalogDataStore {
+	
 	private String filePath;
-    public XMLCatalogDataStore(String filePath) {
+	//by default working directory
+	public XMLCatalogDataStore() {
+    	filePath = System.getProperty("user.dir") 
+    			+ System.getProperty("file.separator")
+    			+ "Catalog.xml";
+    }
+	public XMLCatalogDataStore(String filePath) {
         this.filePath = filePath;
     }
     
