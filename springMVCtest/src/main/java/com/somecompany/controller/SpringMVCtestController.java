@@ -107,10 +107,8 @@ public class SpringMVCtestController {
     		@RequestParam("company") String company,
     		@RequestParam("price") String price,
     		@RequestParam("year") String year) {
-    	
-    	System.out.println(title);
     	catalogService.saveCD(catalogService.createCD(title, artist, country, company, price, year));
-    	return "catalog";
+    	return "redirect:/catalog";
     }
     
 }

@@ -8,7 +8,7 @@
     </head>
     <body>
         <h1>Please upload a file</h1>
-        <form:form method="post" action="/springMVCtest/newcd" enctype="text/plain">
+        <form:form method="post" action="/springMVCtest/newcd">
             <table>
 		        <tr>
 		            <td>Title</td>
