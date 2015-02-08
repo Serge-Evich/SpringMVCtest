@@ -120,4 +120,22 @@ public class SpringMVCtestController {
     	return "redirect:/catalog";
     }
     
+    @RequestMapping(value = "/edit", method = RequestMethod.GET)
+    public ModelAndView editCd(@RequestParam("id") String cdTitle) {
+    	CD cd = catalogService.getCDbyTitle(cdTitle);
+    	ModelAndView model = new ModelAndView("edit");
+    	model.addObject("cd", cd);
+    	return model;
+    }
+    
+    @RequestMapping(value = "/edit", method = RequestMethod.POST) 
+    public String editCdSubmit(@RequestParam("title") String title,
+    		@RequestParam("artist") String artist,
+    		@RequestParam("country") String country,
+    		@RequestParam("company") String company,
+    		@RequestParam("price") String price,
+    		@RequestParam("year") String year) {
+    	catalogService.saveCD(catalogService.createCD(title, artist, country, company, price, year));
+    	return "redirect:/catalog";
+    }
 }

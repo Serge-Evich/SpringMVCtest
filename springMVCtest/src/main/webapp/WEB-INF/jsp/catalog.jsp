@@ -30,9 +30,9 @@
                     <td>${cd.price}</td>
                     <td>${cd.year}</td>
                     <td>
-                        <a href="/edit?id=${cd.title}">Edit</a>
+                        <a href="/springMVCtest/edit?id=${cd.title}">Edit</a>
                         &nbsp;&nbsp;&nbsp;&nbsp;
-                        <a href="/delete?id=${cd.title}">Delete</a>
+                        <a href="/springMVCtest/delete?id=${cd.title}">Delete</a>
                     </td>
                 </tr>
                 </c:forEach>             

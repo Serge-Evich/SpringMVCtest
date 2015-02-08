@@ -58,12 +58,12 @@ public class XMLCatalogDataStore implements CatalogDataStore {
 
     @Override
     public List<Catalog> getByName(String name) {
-        return null;
+        throw new UnsupportedOperationException("This method is not support by this implementation");
     }
 
     @Override
     public List<Catalog> getAll() {
-        return null;
+    	throw new UnsupportedOperationException("This method is not support by this implementation");
     }
 
     @Override
@@ -85,11 +85,11 @@ public class XMLCatalogDataStore implements CatalogDataStore {
 
     @Override
     public void update(Catalog pojo) {
-
+    	throw new UnsupportedOperationException("This method is not support by this implementation");
     }
 
     @Override
     public Catalog remove(Catalog pojo) {
-        return null;
+    	throw new UnsupportedOperationException("This method is not support by this implementation");
     }
 }
