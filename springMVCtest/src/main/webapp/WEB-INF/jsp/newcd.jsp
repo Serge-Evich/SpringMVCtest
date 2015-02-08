@@ -7,7 +7,7 @@
         <title>Add new CD to Catalog</title>
     </head>
     <body>
-        <h1>Please upload a file</h1>
+        <h1>Please add new CD in Catalog</h1>
         <form:form method="post" action="/springMVCtest/newcd">
             <table>
 		        <tr>

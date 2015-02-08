@@ -7,6 +7,8 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.util.Collections;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -40,8 +42,15 @@ public class SpringMVCtestController {
     @RequestMapping(value = "/catalog", method = RequestMethod.GET)
     public ModelAndView getCatalog() {
        	ModelAndView model = new ModelAndView("catalog");
-        model.addObject("cdList", this.catalogService.getCatalog().getCDList());
-        return model;
+       	List<CD> cdList;
+       	try {
+        	cdList = this.catalogService.getCatalog().getCDList(); 
+        } catch (Exception ex) {
+        	ex.printStackTrace();
+        	cdList = Collections.emptyList();
+        }
+       	model.addObject("cdList", cdList);
+       	return model;
     }
 
     @RequestMapping(value = "/upload", method = RequestMethod.POST)
