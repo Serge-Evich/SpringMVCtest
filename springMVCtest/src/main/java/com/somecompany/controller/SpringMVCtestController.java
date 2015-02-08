@@ -138,4 +138,10 @@ public class SpringMVCtestController {
     	catalogService.saveCD(catalogService.createCD(title, artist, country, company, price, year));
     	return "redirect:/catalog";
     }
+    
+    @RequestMapping(value = "/delete", method = RequestMethod.GET)
+    public String deleteCD(@RequestParam("id") String cdTitle) {
+    	catalogService.removeCD(cdTitle);
+    	return "redirect:/catalog";
+    }
 }
